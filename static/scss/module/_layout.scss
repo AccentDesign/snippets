@@ -1,0 +1,68 @@
+// Layout
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+/* header */
+header {
+  background: color(white);
+  border-bottom: 1px solid $border-color;
+
+  .container {
+    height: 6rem;
+  }
+
+  .header-logo {
+    height: 4rem;
+    display: block;
+  }
+
+  .nav {
+    list-style-type: none;
+    margin-bottom: 0;
+
+    li {
+      display: inline-block;
+    }
+
+    li + li {
+      margin-left: 2rem;
+    }
+  }
+
+}
+
+.content {
+  padding-top: 5rem;
+}
+
+/* home page */
+.home {
+
+  .banner {
+    background: color(scorpion);
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  .banner form,
+  .banner input {
+    margin-bottom: 0;
+  }
+
+}
+
+
+/* search page */
+.search {
+
+  .result {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+
+    &:not(:last-child) {
+      border-bottom: solid 1px $border-color;
+    }
+
+  }
+
+}

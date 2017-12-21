@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block page_title %}{% if object.id %}Update{% else %}Create{% endif %} Snippet{% endblock %}
+{% block body_class %}snippet-form{% endblock %}
+{% block inner_content %}
+    <div class="container content">
+        <h2>{% if object.id %}Update{% else %}Create{% endif %} Snippet</h2>
+        {% if object.id %}<p>Created: {{ object.created_on }}</p>{% endif %}
+        <form class="form" method="post" novalidate>
+            {% csrf_token %}
+
+            {% for field in form %}
+                {% include 'partials/form_field.html' %}
+            {% endfor %}
+
+            <input type="submit" class="button button-primary pull-right" value="Save Snippet">
+        </form>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    {{ form.media }}
+    <script src="{% static 'dist/js/form-tools.js' %}"></script>
+{% endblock %}

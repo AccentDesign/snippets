@@ -1,0 +1,19 @@
+{% load i18n static %}
+<header>
+    <div class="container d-flex align-items-center">
+        <a href="/"><img class="header-logo" src="{% static 'dist/images/logo.png' %}"></a>
+        <div class="ml-auto">
+            <ul class="nav">
+                {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                        <li><a href="{% url 'admin:index' %}">{% trans 'Admin' %}</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">{% trans 'Login' %}</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+</header>

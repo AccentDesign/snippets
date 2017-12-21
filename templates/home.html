@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block page_title %}Home{% endblock %}
+{% block body_class %}home{% endblock %}
+{% block inner_content %}
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-3">
+                    <form action="{% url 'docs:search' %}" method="get">
+                        <input type="search" name="search" placeholder="Search">
+                        <button type="submit" class="d-hidden"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container content"></div>
+{% endblock %}

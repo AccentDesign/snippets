@@ -1,0 +1,13 @@
+{% extends 'partials/login.html' %}
+{% load i18n %}
+{% block page_title %}Login{% endblock %}
+{% block box_content %}
+    <form class="form" method="post"novalidate>
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="button button-primary" value="Login">
+    </form>
+    <div>
+        <a href="{% url 'password_reset' %}">{% trans 'Forgot your password?' %}</a>
+    </div>
+{% endblock %}

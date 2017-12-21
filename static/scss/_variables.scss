@@ -1,0 +1,49 @@
+// Variables
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+/*
+* start with a copy of the current varables file:
+* https://github.com/AccentDesign/karma-css/blob/master/scss/_variables.scss
+*/
+
+
+// Typography
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// Base font
+$base-font-family:              'Lato', sans-serif;
+
+$code-font-family:              'Inconsolata', monospace;
+
+
+// Styling
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// colors
+$colors: (
+    // required base colours
+    white:                      rgb(255, 255, 255),
+    black:                      rgb(17, 17, 17),
+    primary:                    rgb(51, 195, 240),
+    secondary:                  rgb(240, 240, 240),
+
+    // custom
+    cinnabar:                   rgb(220, 53, 69),
+    scorpion:                   rgb(86, 86, 86),
+);
+
+// defined colors
+$body-background:               rgb(245, 246, 247);
+$code-background:               rgb(64, 64, 64);
+$font-color:                    rgb(95, 95, 95);
+
+// buttons
+$buttons: (
+    // name                     color                             font-color
+    primary:                    map-get($colors, primary)         map-get($colors, white),
+    secondary:                  map-get($colors, secondary)       map-get($colors, black),
+    cinnabar:                   map-get($colors, cinnabar)        map-get($colors, white)
+) !default;
+
+// forms
+$input-use-full-width:          true;

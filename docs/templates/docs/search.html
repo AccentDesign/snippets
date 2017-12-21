@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block page_title %}Search Results{% endblock %}
+{% block body_class %}search{% endblock %}
+{% block inner_content %}
+    <div class="container content">
+        <div class="row">
+            <div class="col-6">
+                <form action="{% url 'docs:search' %}" method="get">
+                    <input type="search" name="search" placeholder="Search" value="{{ search }}">
+                    <button type="submit" class="d-hidden"></button>
+                </form>
+            </div>
+        </div>
+        {% with total=object_list.count %}
+            <h2>{% trans 'Search results' %} <small class="muted">{{ total }} match{{ total|pluralize:"es" }} found</small></h2>
+        {% endwith %}
+        {% for object in object_list %}
+        <div class="result">
+            <a href="{{ object.specific.get_absolute_url }}" class="h3">{{ object.title }}</a> <small class="muted">{{ object.content_type }}</small>
+            <p>{{ object.description }}</p>
+            {% include 'docs/partials/tags.html' with tags=object.specific.tags.all %}
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

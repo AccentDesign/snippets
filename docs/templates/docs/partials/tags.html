@@ -1,0 +1,1 @@
+{% if tags %}<ul class="tags">{% for tag in tags %}<li><a href="{% url 'docs:search' %}?search={{ tag }}">{{ tag }}</a></li>{% endfor %}</ul>{% endif %}
