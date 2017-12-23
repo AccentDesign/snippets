@@ -4,8 +4,6 @@
 {% block body_class %}page-form{% endblock %}
 {% block inner_content %}
     <div class="container content">
-        <h2>{% if object.id %}Update{% else %}Create{% endif %} Page</h2>
-        {% if object.id %}<p>Created: {{ object.created_on }}</p>{% endif %}
         <form class="form" method="post" novalidate>
             {% csrf_token %}
 
@@ -41,7 +39,7 @@
             {% endwith %}
 
             <input type="submit" class="button button-primary pull-right" value="Save Page">
-            <a class="button" onclick="cloneFormsetRow('.empty-form', 'content_items');">Add Another Section</a>
+            <a class="button" onclick="cloneFormsetRow('.empty-form', 'content_items');">Add Content</a>
         </form>
     </div>
 {% endblock %}

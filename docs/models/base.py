@@ -27,6 +27,9 @@ class BaseDoc(ClusterableModel):
     created_on = models.DateTimeField(
         auto_now_add=True
     )
+    updated_on = models.DateTimeField(
+        auto_now=True
+    )
     content_type = models.ForeignKey(
         'contenttypes.ContentType',
         related_name='docs',

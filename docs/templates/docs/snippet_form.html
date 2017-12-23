@@ -4,8 +4,6 @@
 {% block body_class %}snippet-form{% endblock %}
 {% block inner_content %}
     <div class="container content">
-        <h2>{% if object.id %}Update{% else %}Create{% endif %} Snippet</h2>
-        {% if object.id %}<p>Created: {{ object.created_on }}</p>{% endif %}
         <form class="form" method="post" novalidate>
             {% csrf_token %}
 
