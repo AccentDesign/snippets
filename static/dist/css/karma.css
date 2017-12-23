@@ -1470,7 +1470,8 @@ header{
       margin-left:2rem; }
 
 .content{
-  padding-top:5rem; }
+  padding-top:5rem;
+  padding-bottom:8rem; }
 .home .banner{
   background:#565656;
   padding-top:10rem;
@@ -1482,6 +1483,8 @@ header{
 .search .result{
   margin-bottom:2rem;
   padding-bottom:1rem; }
+  .search .result h3{
+    margin-bottom:1.5rem; }
   .search .result:not(:last-child){
     border-bottom:solid 1px #e6e6e6; }
 

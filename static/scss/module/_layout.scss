@@ -33,6 +33,7 @@ header {
 
 .content {
   padding-top: 5rem;
+  padding-bottom: 8rem;
 }
 
 /* home page */
@@ -59,6 +60,10 @@ header {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
 
+    h3 {
+      margin-bottom: $generic-margin-bottom;
+    }
+    
     &:not(:last-child) {
       border-bottom: solid 1px $border-color;
     }
