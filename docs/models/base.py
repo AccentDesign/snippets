@@ -1,13 +1,9 @@
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.urls import reverse
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from modelcluster.models import ClusterableModel
-from modelcluster.fields import ParentalKey
-from markdownx.models import MarkdownxField
-from markdownx.utils import markdownify
 from taggit.managers import TaggableManager
 
 
@@ -66,52 +62,3 @@ class BaseDoc(ClusterableModel):
     def specific_class(self):
         content_type = ContentType.objects.get_for_id(self.content_type_id)
         return content_type.model_class()
-
-
-class PageContentItem(models.Model):
-    """ Page content """
-
-    doc = ParentalKey(
-        'BaseDoc',
-        on_delete=models.CASCADE,
-        related_name='content_items'
-    )
-    content = MarkdownxField(
-        blank=True
-    )
-    snippet = models.ForeignKey(
-        'docs.Snippet',
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True
-    )
-    order = models.PositiveIntegerField(
-        default=0
-    )
-
-    class Meta:
-        ordering = ['order', ]
-
-    @property
-    def formatted_content(self):
-        return markdownify(self.content)
-
-
-class Page(BaseDoc):
-    """ Page model """
-
-    def get_absolute_url(self):
-        return reverse('docs:page-detail', kwargs={'slug': self.slug})
-
-
-class Snippet(BaseDoc):
-    """ Snippet model """
-
-    content = MarkdownxField()
-
-    def get_absolute_url(self):
-        return reverse('docs:snippet-detail', kwargs={'slug': self.slug})
-
-    @property
-    def formatted_content(self):
-        return markdownify(self.content)

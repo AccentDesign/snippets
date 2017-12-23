@@ -70,7 +70,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='basedoc',
             name='content_type',
-            field=models.ForeignKey(on_delete=models.SET(docs.models.get_default_form_content_type), related_name='docs', to='contenttypes.ContentType'),
+            field=models.ForeignKey(on_delete=models.SET(docs.models.base.get_default_form_content_type), related_name='docs', to='contenttypes.ContentType'),
         ),
         migrations.AddField(
             model_name='pagecontentitem',
