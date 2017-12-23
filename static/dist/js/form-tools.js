@@ -1,5 +1,5 @@
 function cloneFormsetRow(selector, type) {
-    var $newElement = $(selector).clone(true, true);
+    var $newElement = $(selector).clone(true, true).removeClass('empty-form');
     var $total = $('#id_' + type + '-TOTAL_FORMS').val();
 
     $newElement.find(':input, select, a, span, label').each(function() {
@@ -20,7 +20,17 @@ function cloneFormsetRow(selector, type) {
     $total++;
 
     $('#id_' + type + '-TOTAL_FORMS').val($total);
-    $($newElement).removeClass('empty-form');
+
+    // if there is a markdownx re initialize it
+    markdownx = $($newElement).find('.markdownx');
+    if (markdownx) {
+        new window.MarkdownX(
+            markdownx[0],
+            markdownx[0].querySelector('.markdownx-editor'),
+            markdownx[0].querySelector('.markdownx-preview')
+        );
+    }
+
     $(selector).before($newElement);
 }
 
