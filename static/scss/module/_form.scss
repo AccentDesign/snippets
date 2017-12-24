@@ -27,14 +27,14 @@
 // formset specific
 
 .formset {
-    background: color(secondary);
+    background: color(porcelain);
     border: solid 1px $border-color;
     margin-bottom: $generic-margin-bottom;
     padding: 1.5rem;
 }
 
 .formset.deleted {
-    background: darken(color(secondary), 10%);
+    background: darken(color(porcelain), 10%);
     opacity: .75;
     border: solid 1px color(cinnabar);
 }
@@ -58,7 +58,7 @@
 }
 
 .markdownx-preview {
-    background: darken(color(secondary), 3%);
+    background: color(porcelain);
     padding: $input-padding-x $input-padding-y;
 }
 

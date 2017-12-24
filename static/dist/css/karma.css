@@ -1403,7 +1403,7 @@ blockquote{
   padding:1rem 1.5rem;
   border-left:3px solid #e6e6e6; }
 .card{
-  background:#f0f0f0;
+  background:#eff1f2;
   border:solid 1px #e6e6e6;
   margin-bottom:3rem;
   padding:3rem;
@@ -1465,13 +1465,13 @@ blockquote{
   margin-top:2rem; }
 
 .formset{
-  background:#f0f0f0;
+  background:#eff1f2;
   border:solid 1px #e6e6e6;
   margin-bottom:1.5rem;
   padding:1.5rem; }
 
 .formset.deleted{
-  background:#d7d7d7;
+  background:#d3d8db;
   opacity:.75;
   border:solid 1px #dc3545; }
 
@@ -1486,7 +1486,7 @@ blockquote{
   resize:vertical; }
 
 .markdownx-preview{
-  background:#e8e8e8;
+  background:#eff1f2;
   padding:1rem 1rem; }
 @media (min-width: 992px){
   .markdownx{
@@ -1522,15 +1522,17 @@ header{
     margin-bottom:2rem; }
   .content h3{
     margin-bottom:1.5rem; }
+.search-form form,
+.search-form input{
+  height:5rem; }
 .home .banner{
   background:#a0b636;
   padding-top:8rem;
   padding-bottom:8rem; }
 
-.home .banner form,
-.home .banner input{
-  margin-bottom:0;
-  height:5rem; }
+.home .search-form form,
+.home .search-form input{
+  margin-bottom:0; }
 
 .home .latest{
   margin-bottom:3rem; }
@@ -1715,6 +1717,12 @@ code, .highlight pre{
 
 .c-cinnabar{
   color:#dc3545; }
+
+.b-porcelain{
+  background-color:#eff1f2; }
+
+.c-porcelain{
+  color:#eff1f2; }
 .clearfix::after{
   content:"";
   display:block;

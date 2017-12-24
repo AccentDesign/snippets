@@ -46,6 +46,12 @@ header {
 
 }
 
+/* search form */
+.search-form form,
+.search-form input {
+  height: 5rem;
+}
+
 /* home page */
 .home {
 
@@ -55,10 +61,9 @@ header {
     padding-bottom: 8rem;
   }
 
-  .banner form,
-  .banner input {
+  .search-form form,
+  .search-form input {
     margin-bottom: 0;
-    height: 5rem;
   }
 
   .latest {

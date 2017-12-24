@@ -5,8 +5,8 @@
 {% block inner_content %}
     <div class="container content">
         <div class="row">
-            <div class="col-6">
-                <form action="{% url 'docs:search' %}" method="get">
+            <div class="col-lg-6">
+                <form class="search-form" action="{% url 'docs:search' %}" method="get">
                     <input type="search" name="q" placeholder="Search" value="{{ q }}">
                     <button type="submit" class="d-hidden"></button>
                 </form>
