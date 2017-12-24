@@ -15,14 +15,14 @@ class SearchView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context.update({
-            'search': self.request.GET.get('search')
+            'q': self.request.GET.get('q')
         })
         return context
 
     def get_queryset(self):
-        search = self.request.GET.get('search')
+        q = self.request.GET.get('q')
         vector = SearchVector('title', 'description', 'tags__name')
-        query = SearchQuery(search)
+        query = SearchQuery(q)
         return self.model.objects.annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.01).order_by('-rank')
 
 
