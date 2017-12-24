@@ -31,25 +31,39 @@ header {
 
 }
 
+/* body */
 .content {
   padding-top: 5rem;
   padding-bottom: 8rem;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    margin-bottom: 1.5rem;
+  }
+
 }
 
 /* home page */
 .home {
 
   .banner {
-    background: color(scorpion);
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+    background: color(primary);
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
 
   .banner form,
   .banner input {
     margin-bottom: 0;
+    height: 5rem;
   }
 
+  .latest {
+    margin-bottom: 3rem;
+  }
 }
 
 
@@ -59,10 +73,6 @@ header {
   .result {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-
-    h3 {
-      margin-bottom: $generic-margin-bottom;
-    }
     
     &:not(:last-child) {
       border-bottom: solid 1px $border-color;
