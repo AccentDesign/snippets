@@ -31,10 +31,3 @@ class SnippetForm(forms.ModelForm):
     class Meta:
         model = Snippet
         exclude = ('content_type', )
-
-    def save(self, commit=True):
-        instance = super().save(commit=False)
-        if commit:
-            instance.save()
-            self.save_m2m()
-        return instance
