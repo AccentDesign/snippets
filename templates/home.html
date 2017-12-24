@@ -15,5 +15,20 @@
             </div>
         </div>
     </div>
-    <div class="container content"></div>
+    <div class="container content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div><span class="icon-doc"></span><br>Create a new page</div>
+                    <a href="{% url 'docs:page-create' %}"></a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div><span class="icon-code"></span><br>Create a new snippet</div>
+                    <a href="{% url 'docs:snippet-create' %}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

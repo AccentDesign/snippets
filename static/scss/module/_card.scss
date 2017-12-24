@@ -1,0 +1,25 @@
+// Card
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.card {
+  background: color(secondary);
+  border: solid 1px $border-color;
+  margin-bottom: $generic-margin-bottom;
+  padding: 3rem;
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    color: color(primary);
+  }
+
+  [class*="icon-"]:before {
+    font-size: 2rem;
+  }
+
+  a {
+    @include abs-position(0, 0, 0, 0);
+  }
+
+}

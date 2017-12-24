@@ -8,6 +8,8 @@
 @import "karma-css/scss/import";
 
 /* add your custom modules here */
+@import "module/card";
+@import "module/fontello";
 @import "module/form";
 @import "module/layout";
 @import "module/login";
