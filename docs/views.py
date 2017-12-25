@@ -3,6 +3,7 @@ from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, UpdateView, ListView
 from django.views.generic.detail import DetailView
+from taggit.models import Tag
 
 from app.views.mixins import AutoCompleteView
 from .forms import PageForm, PageContentItemFormset, SnippetForm
@@ -116,3 +117,8 @@ class SnippetCreateView(LoginRequiredMixin, CreateView):
 class SnippetUpdateView(LoginRequiredMixin, UpdateView):
     model = Snippet
     form_class = SnippetForm
+
+
+class TagsAutocomplete(AutoCompleteView):
+    model = Tag
+    filter_arg = 'name__istartswith'

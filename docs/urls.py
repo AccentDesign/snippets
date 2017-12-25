@@ -12,5 +12,6 @@ urlpatterns = [
     path('pages/<slug:slug>/update/', PageUpdateView.as_view(), name='page-update'),
     path('snippets/create/', SnippetCreateView.as_view(), name='snippet-create'),
     path('snippets/<slug:slug>/', SnippetDetailView.as_view(), name='snippet-detail'),
-    path('snippets/<slug:slug>/update/', SnippetUpdateView.as_view(), name='snippet-update')
+    path('snippets/<slug:slug>/update/', SnippetUpdateView.as_view(), name='snippet-update'),
+    path('tags/autocomplete/', TagsAutocomplete.as_view(), name='tag-autocomplete')
 ]

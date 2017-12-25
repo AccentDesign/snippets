@@ -11,7 +11,8 @@ class PageForm(forms.ModelForm):
         model = Page
         exclude = ('content_type', )
         widgets = {
-            'linked_pages': autocomplete.ModelSelect2Multiple(url='docs:page-autocomplete')
+            'linked_pages': autocomplete.ModelSelect2Multiple(url='docs:page-autocomplete'),
+            'tags': autocomplete.TaggitSelect2('docs:tag-autocomplete')
         }
 
 
@@ -36,3 +37,6 @@ class SnippetForm(forms.ModelForm):
     class Meta:
         model = Snippet
         exclude = ('content_type', )
+        widgets = {
+            'tags': autocomplete.TaggitSelect2('docs:tag-autocomplete')
+        }
