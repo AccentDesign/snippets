@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, UpdateView, ListView
 from django.views.generic.detail import DetailView
 
+from app.views.mixins import AutoCompleteView
 from .forms import PageForm, PageContentItemFormset, SnippetForm
 from .models import BaseDoc, Page, Snippet
 
@@ -24,6 +25,11 @@ class SearchView(ListView):
         vector = SearchVector('title', 'description', 'tags__name')
         query = SearchQuery(q)
         return self.model.objects.annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.01).order_by('-rank')
+
+
+class PageAutocomplete(AutoCompleteView):
+    model = Page
+    filter_arg = 'title__istartswith'
 
 
 class PageCreateView(LoginRequiredMixin, CreateView):

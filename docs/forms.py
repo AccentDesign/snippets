@@ -1,13 +1,18 @@
 from django import forms
 from django.forms import inlineformset_factory
 
+from dal import autocomplete
+
 from .models import Page, PageContentItem, Snippet
 
 
 class PageForm(forms.ModelForm):
     class Meta:
         model = Page
-        exclude = ('content_type',)
+        exclude = ('content_type', )
+        widgets = {
+            'linked_pages': autocomplete.ModelSelect2Multiple(url='docs:page-autocomplete')
+        }
 
 
 class PageContentItemForm(forms.ModelForm):

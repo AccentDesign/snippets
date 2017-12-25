@@ -40,10 +40,6 @@ header {
     margin-bottom: 2rem;
   }
 
-  h3 {
-    margin-bottom: 1.5rem;
-  }
-
 }
 
 /* search form */
@@ -83,6 +79,19 @@ header {
       border-bottom: solid 1px $border-color;
     }
 
+  }
+
+}
+
+/* linked pages block */
+.linked-pages {
+  background: color(porcelain);
+  border: solid 1px $border-color;
+  margin-bottom: $generic-margin-bottom;
+  padding: 1.5rem;
+
+  ul {
+    margin-bottom: 0;
   }
 
 }

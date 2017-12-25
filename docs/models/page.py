@@ -40,5 +40,10 @@ class PageContentItem(models.Model):
 class Page(BaseDoc):
     """ Page model """
 
+    linked_pages = models.ManyToManyField(
+        'self',
+        blank=True
+    )
+
     def get_absolute_url(self):
         return reverse('docs:page-detail', kwargs={'slug': self.slug})

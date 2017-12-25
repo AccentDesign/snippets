@@ -6,6 +6,7 @@ app_name = 'docs'
 
 urlpatterns = [
     path('search/', SearchView.as_view(), name='search'),
+    path('pages/autocomplete/', PageAutocomplete.as_view(), name='page-autocomplete'),
     path('pages/create/', PageCreateView.as_view(), name='page-create'),
     path('pages/<slug:slug>/', PageDetailView.as_view(), name='page-detail'),
     path('pages/<slug:slug>/update/', PageUpdateView.as_view(), name='page-update'),

@@ -76,3 +76,32 @@
         @include make-col(6);
     }
 }
+
+
+// select2 - django auto complete
+
+.select2-container--default {
+    margin-bottom: $input-margin-bottom !important;
+}
+
+.select2-container--default .select2-selection--multiple {
+    background-color: $input-background !important;
+    border: $input-border !important;
+    border-radius: $input-border-radius !important;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    background: $input-background-focus !important;
+    border-color: $input-border-color-focus !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: color(secondary) !important;
+    border: $input-border !important;
+    border-radius: $input-border-radius !important;
+}
+
+.select2-container--default .select2-search--inline .select2-search__field {
+    margin: .5rem .5rem 0 .5rem;
+    height: 2.5rem;
+}

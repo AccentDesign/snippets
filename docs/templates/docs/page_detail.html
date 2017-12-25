@@ -5,7 +5,19 @@
 {% block inner_content %}
     <div class="container content">
         <h1>{{ object.title }}</h1>
-        <p>{{ object.description|linebreaks }}</p>
+        {% if object.description %}<p>{{ object.description|linebreaks }}</p>{% endif %}
+
+        {% if object.linked_pages.count %}
+        <div class="linked-pages">
+            <div class="h3">Linked Pages</div>
+            <ul>
+            {% for page in object.linked_pages.all %}
+                <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
         {% for item in object.content_items.all %}
             {{ item.formatted_content|safe }}
             {% if item.snippet %}
@@ -13,6 +25,7 @@
                 {{ item.snippet.formatted_content|safe }}
             {% endif %}
         {% endfor %}
+
         <p>Created: {{ object.created_on }} Updated: {{ object.updated_on }}</p>
         {% include 'docs/partials/tags.html' with tags=object.tags.all %}
         <a href="{% url 'docs:page-update' object.slug %}" class="button">Update Page</a>
