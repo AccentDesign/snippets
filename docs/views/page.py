@@ -1,31 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.http import HttpResponseRedirect
-from django.views.generic import CreateView, UpdateView, ListView
+from django.views.generic import CreateView, UpdateView
 from django.views.generic.detail import DetailView
-from taggit.models import Tag
 
 from app.views.mixins import AutoCompleteView
-from .forms import PageForm, PageContentItemFormset, SnippetForm
-from .models import BaseDoc, Page, Snippet
-
-
-class SearchView(ListView):
-    template_name = 'docs/search.html'
-    model = BaseDoc
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context.update({
-            'q': self.request.GET.get('q')
-        })
-        return context
-
-    def get_queryset(self):
-        q = self.request.GET.get('q')
-        vector = SearchVector('title', 'description', 'tags__name')
-        query = SearchQuery(q)
-        return self.model.objects.annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.01).order_by('-rank')
+from ..forms import PageForm, PageContentItemFormset, SnippetForm
+from ..models import Page
 
 
 class PageAutocomplete(AutoCompleteView):
@@ -103,22 +83,3 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
 
 class PageDetailView(DetailView):
     model = Page
-
-
-class SnippetDetailView(DetailView):
-    model = Snippet
-
-
-class SnippetCreateView(LoginRequiredMixin, CreateView):
-    model = Snippet
-    form_class = SnippetForm
-
-
-class SnippetUpdateView(LoginRequiredMixin, UpdateView):
-    model = Snippet
-    form_class = SnippetForm
-
-
-class TagsAutocomplete(AutoCompleteView):
-    model = Tag
-    filter_arg = 'name__istartswith'
