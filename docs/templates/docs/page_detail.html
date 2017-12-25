@@ -21,7 +21,7 @@
         {% for item in object.content_items.all %}
             {{ item.formatted_content|safe }}
             {% if item.snippet %}
-                <p>{{ item.snippet }}</p>
+                <div class="hover-link h4">{{ item.snippet }} <a href="{{ item.snippet.get_absolute_url }}"><i class="icon-link"></i></a></div>
                 {{ item.snippet.formatted_content|safe }}
             {% endif %}
         {% endfor %}

@@ -95,3 +95,15 @@ header {
   }
 
 }
+
+/* text with inline link that is visible on hover */
+.hover-link {
+
+  a {
+    display: none;
+  }
+
+  &:hover a{
+    display: inline;
+  }
+}

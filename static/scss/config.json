@@ -17,6 +17,12 @@
       "css": "doc",
       "code": 59392,
       "src": "fontawesome"
+    },
+    {
+      "uid": "0ddd3e8201ccc7d41f7b7c9d27eca6c1",
+      "css": "link",
+      "code": 59393,
+      "src": "fontawesome"
     }
   ]
 }
