@@ -22,14 +22,25 @@
                     <div><span class="icon-doc"></span><br>Create a new page</div>
                     <a href="{% url 'docs:page-create' %}"></a>
                 </div>
-                <h3>Last updated pages</h3>
-                {% latest_pages 10 %}
             </div>
             <div class="col-md-6">
                 <div class="card">
                     <div><span class="icon-code"></span><br>Create a new snippet</div>
                     <a href="{% url 'docs:snippet-create' %}"></a>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% latest_snippet %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Last updated pages</h3>
+                {% latest_pages 10 %}
+            </div>
+            <div class="col-md-6">
                 <h3>Last updated snippets</h3>
                 {% latest_snippets 10 %}
             </div>

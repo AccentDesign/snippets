@@ -1405,6 +1405,7 @@ blockquote{
 .card{
   background:#eff1f2;
   border:solid 1px #e6e6e6;
+  border-radius:0.25rem;
   margin-bottom:3rem;
   padding:3rem;
   position:relative;
@@ -1541,8 +1542,6 @@ header{
 .content{
   padding-top:5rem;
   padding-bottom:8rem; }
-  .content h2{
-    margin-bottom:2rem; }
 .search-form form,
 .search-form input{
   height:5rem; }
@@ -1554,6 +1553,20 @@ header{
 .home .search-form form,
 .home .search-form input{
   margin-bottom:0; }
+
+.home .latest-snippet{
+  background:#eff1f2;
+  border:solid 1px #e6e6e6;
+  border-radius:0.25rem;
+  margin-bottom:3rem; }
+
+.home .latest-snippet .snippet-title{
+  font-weight:bold;
+  padding:1rem 2rem;
+  border-bottom:solid 1px #e6e6e6; }
+
+.home .latest-snippet .snippet-content{
+  padding:2rem; }
 
 .home .latest{
   margin-bottom:3rem; }

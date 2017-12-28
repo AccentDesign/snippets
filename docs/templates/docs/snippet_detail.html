@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <h2>{{ object.title }}</h2>
-                {% if object.description %}<p>{{ object.description|linebreaks }}</p>{% endif %}
+                {% if object.description %}{{ object.description|linebreaks }}{% endif %}
                 <div class="hidden-md-down">
                     <p>Created: {{ object.created_on }}<br>Updated: {{ object.updated_on }}</p>
                     {% include 'docs/partials/tags.html' with tags=object.tags.all %}

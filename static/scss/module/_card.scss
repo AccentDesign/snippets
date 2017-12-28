@@ -4,6 +4,7 @@
 .card {
   background: color(porcelain);
   border: solid 1px $border-color;
+  border-radius: $global-radius;
   margin-bottom: 3rem;
   padding: 3rem;
   position: relative;
