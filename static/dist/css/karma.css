@@ -1424,8 +1424,8 @@ blockquote{
 
 @font-face{
   font-family:'fontello';
-  src:url("../fonts/fontello.eot?1456359");
-  src:url("../fonts/fontello.eot?1456359#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2?1456359") format("woff2"), url("../fonts/fontello.woff?1456359") format("woff"), url("../fonts/fontello.ttf?1456359") format("truetype"), url("../fonts/fontello.svg?1456359#fontello") format("svg");
+  src:url("../fonts/fontello.eot?73916039");
+  src:url("../fonts/fontello.eot?73916039#iefix") format("embedded-opentype"), url("../fonts/fontello.woff2?73916039") format("woff2"), url("../fonts/fontello.woff?73916039") format("woff"), url("../fonts/fontello.ttf?73916039") format("truetype"), url("../fonts/fontello.svg?73916039#fontello") format("svg");
   font-weight:normal;
   font-style:normal; }
 [class^="icon-"]:before, [class*=" icon-"]:before{
@@ -1449,8 +1449,14 @@ blockquote{
   content:'\e800'; }
 .icon-link:before{
   content:'\e801'; }
+.icon-down-big:before{
+  content:'\e802'; }
+.icon-up-big:before{
+  content:'\e803'; }
 .icon-code:before{
   content:'\f121'; }
+.icon-trash:before{
+  content:'\f1f8'; }
 .help-text{
   display:block;
   margin-bottom:1.5rem; }
@@ -1467,19 +1473,30 @@ blockquote{
 .submit-row{
   margin-top:2rem; }
 
-.formset{
+.dynamic-formset .formset{
   background:#eff1f2;
   border:solid 1px #e6e6e6;
   margin-bottom:1.5rem;
   padding:1.5rem; }
 
-.formset.deleted{
+.dynamic-formset .formset.deleted{
   background:#d3d8db;
   opacity:.75;
   border:solid 1px #dc3545; }
 
-.formset.empty-form{
+.dynamic-formset .empty-formset{
   display:none; }
+
+.dynamic-formset .actions{
+  list-style-type:none;
+  float:right; }
+  .dynamic-formset .actions li{
+    display:inline-block; }
+  .dynamic-formset .actions li > *{
+    cursor:pointer !important; }
+
+.dynamic-formset .formset.first .action-up,.dynamic-formset .formset.last .action-down{
+  display:none !important; }
 .markdownx{
   margin-bottom:1.5rem; }
 
@@ -1496,7 +1513,8 @@ blockquote{
     display:-webkit-box;
     display:-webkit-flex;
     display:-ms-flexbox;
-    display:flex; }
+    display:flex;
+    width:100%; }
   .markdownx-editor,.markdownx-preview{
     -webkit-box-flex:0;
     -webkit-flex:0 0 50%;

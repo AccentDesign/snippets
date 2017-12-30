@@ -13,33 +13,48 @@
 
             {{ formset.management_form }}
 
-            {% for formset_form in formset.forms %}
-                <div class="formset{% if formset_form.DELETE.value %} deleted{% endif %}">
-                    {% for field in formset_form.hidden_fields %}{{ field }}{% endfor %}
-                    {% include 'partials/form_field.html' with field=formset_form.content %}
-                    <div class="row">
-                        <div class="col-md-6">{% include 'partials/form_field.html' with field=formset_form.snippet %}</div>
-                        <div class="col-md-6">{% include 'partials/form_field.html' with field=formset_form.order %}</div>
-                    </div>
-                    <label class="button button-cinnabar" for="{{ formset_form.DELETE.id_for_label }}">
-                        {{ formset_form.DELETE|addcss:'d-hidden' }} Remove
-                    </label>
-                </div>
-            {% endfor %}
+            <div class="dynamic-formset"
+                 data-form-prefix="content_items"
+                 data-form-class="formset"
+                 data-empty-form-class="empty-formset">
 
-            {% with empty_form=formset.empty_form %}
-                <div class="formset empty-form">
-                    {% for field in empty_form.hidden_fields %}{{ field }}{% endfor %}
-                    {% include 'partials/form_field.html' with field=empty_form.content %}
-                    <div class="row">
-                        <div class="col-md-6">{% include 'partials/form_field.html' with field=empty_form.snippet %}</div>
-                        <div class="col-md-6">{% include 'partials/form_field.html' with field=empty_form.order %}</div>
+                {% for formset_form in formset.forms %}
+                    <div class="formset{% if formset_form.DELETE.value %} deleted{% endif %}{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %}">
+                        <ul class="actions">
+                            <li class="action-up"><i class="icon-up-big"></i></li>
+                            <li class="action-down"><i class="icon-down-big"></i></li>
+                            <li class="action-delete">
+                                <label for="{{ formset_form.DELETE.id_for_label }}">
+                                    <i class="icon-trash"></i>{{ formset_form.DELETE|addcss:'d-hidden' }}
+                                </label>
+                            </li>
+                        </ul>
+                        {% for field in formset_form.hidden_fields %}{{ field }}{% endfor %}
+                        {% include 'partials/form_field.html' with field=formset_form.content %}
+                        {% include 'partials/form_field.html' with field=formset_form.snippet %}
+                        {{ formset_form.order|addcss:'d-hidden' }}
                     </div>
-                </div>
-            {% endwith %}
+                {% endfor %}
+
+                {% with empty_form=formset.empty_form %}
+                    <div class="empty-formset">
+                        <ul class="actions">
+                            <li class="action-up"><i class="icon-up-big"></i></li>
+                            <li class="action-down"><i class="icon-down-big"></i></li>
+                        </ul>
+                        {% for field in empty_form.hidden_fields %}{{ field }}{% endfor %}
+                        {% include 'partials/form_field.html' with field=empty_form.content %}
+                        {% include 'partials/form_field.html' with field=empty_form.snippet %}
+                        {{ empty_form.order|addcss:'d-hidden' }}
+                    </div>
+                {% endwith %}
+
+                <a class="button add-row">Add Content</a>
+
+            </div>
 
             <input type="submit" class="button button-primary pull-right" value="Save Page">
-            <a class="button" onclick="cloneFormsetRow('.empty-form', 'content_items');">Add Content</a>
+
         </form>
     </div>
 {% endblock %}
@@ -47,5 +62,9 @@
 {% block extra_js %}
     {{ form.media }}
     {{ formset.media }}
+    <script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{% static 'dist/js/form-tools.js' %}"></script>
+    <script>
+        $('.dynamic-formset').formset();
+    </script>
 {% endblock %}
