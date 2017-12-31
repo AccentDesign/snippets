@@ -26,9 +26,11 @@ class SearchView(ListView):
         return self.request.GET.get('q', '').split()
 
     def get_search_vector(self):
-        return SearchVector('title', weight='A') + \
-               SearchVector('description', weight='C') + \
-               SearchVector(StringAgg('tags__name', delimiter=' '), weight='B')
+        return (
+            SearchVector('title', weight='A') +
+            SearchVector('description', weight='C') +
+            SearchVector(StringAgg('tags__name', delimiter=' '), weight='B')
+        )
 
     def get_search_query(self):
         search_terms = self.get_search_kwargs()

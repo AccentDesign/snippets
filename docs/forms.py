@@ -22,7 +22,7 @@ class PageContentItemForm(forms.ModelForm):
     class Meta:
         model = PageContentItem
         fields = ('content', 'snippet', 'order')
-        widgets={
+        widgets = {
             'content': MarkdownxWidget
         }
 
