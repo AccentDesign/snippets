@@ -11,6 +11,12 @@ Bare bones starter project complete with the following
 - Login, password reset, password change
 - Karma CSS
 
+Screenshot
+**********
+
+.. figure:: screenshot.png
+   :width: 728 px
+
 Getting Started
 ***************
 
