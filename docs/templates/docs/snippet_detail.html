@@ -9,7 +9,7 @@
                 <h2>{{ object.title }}</h2>
                 {% if object.description %}{{ object.description|linebreaks }}{% endif %}
                 <div class="hidden-md-down">
-                    <p>Created: {{ object.created_on }}<br>Updated: {{ object.updated_on }}</p>
+                    <p class="small muted">Created: {{ object.created_on }}<br>Updated: {{ object.updated_on }}</p>
                     {% include 'docs/partials/tags.html' with tags=object.tags.all %}
                     <a href="{% url 'docs:snippet-update' object.slug %}" class="button">Update Snippet</a>
                 </div>
@@ -17,7 +17,7 @@
             <div class="col-lg-8">
                 {{ object.formatted_content|safe }}
                 <div class="hidden-lg-up">
-                    <p>Created: {{ object.created_on }} Updated: {{ object.updated_on }}</p>
+                    <p class="small muted">Created: {{ object.created_on }} Updated: {{ object.updated_on }}</p>
                     {% include 'docs/partials/tags.html' with tags=object.tags.all %}
                     <a href="{% url 'docs:snippet-update' object.slug %}" class="button">Update Snippet</a>
                 </div>

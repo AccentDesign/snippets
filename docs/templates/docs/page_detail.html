@@ -26,7 +26,7 @@
             {% endif %}
         {% endfor %}
 
-        <p>Created: {{ object.created_on }} Updated: {{ object.updated_on }}</p>
+        <p class="small muted">Created: {{ object.created_on }} Updated: {{ object.updated_on }}</p>
         {% include 'docs/partials/tags.html' with tags=object.tags.all %}
         <a href="{% url 'docs:page-update' object.slug %}" class="button">Update Page</a>
     </div>
