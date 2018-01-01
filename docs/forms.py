@@ -17,6 +17,24 @@ class PageForm(forms.ModelForm):
             'tags': autocomplete.TaggitSelect2('docs:tag-autocomplete')
         }
 
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
+        super().__init__(*args, **kwargs)
+
+    def save(self, commit=True):
+        """ overwrite the form save to update the created_by and updated_by """
+
+        instance = super().save(commit=False)
+
+        if not self.instance.pk or not self.instance.created_by:
+            instance.created_by = self.user
+        instance.updated_by = self.user
+
+        instance.save()
+        self.save_m2m()
+
+        return instance
+
 
 class PageContentItemForm(forms.ModelForm):
     class Meta:
@@ -45,3 +63,21 @@ class SnippetForm(forms.ModelForm):
             'content': MarkdownxWidget,
             'tags': autocomplete.TaggitSelect2('docs:tag-autocomplete')
         }
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
+        super().__init__(*args, **kwargs)
+
+    def save(self, commit=True):
+        """ overwrite the form save to update the created_by and updated_by """
+
+        instance = super().save(commit=False)
+
+        if not self.instance.pk or not self.instance.created_by:
+            instance.created_by = self.user
+        instance.updated_by = self.user
+
+        instance.save()
+        self.save_m2m()
+
+        return instance

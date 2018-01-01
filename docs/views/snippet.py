@@ -14,7 +14,21 @@ class SnippetCreateView(LoginRequiredMixin, CreateView):
     model = Snippet
     form_class = SnippetForm
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({
+            'user': self.request.user
+        })
+        return kwargs
+
 
 class SnippetUpdateView(LoginRequiredMixin, UpdateView):
     model = Snippet
     form_class = SnippetForm
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({
+            'user': self.request.user
+        })
+        return kwargs

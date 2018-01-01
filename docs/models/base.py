@@ -27,8 +27,23 @@ class BaseDoc(ClusterableModel):
     created_on = models.DateTimeField(
         auto_now_add=True
     )
+    created_by = models.ForeignKey(
+        'authentication.User',
+        on_delete=models.SET_NULL,
+        editable=False,
+        null=True,
+        blank=True
+    )
     updated_on = models.DateTimeField(
         auto_now=True
+    )
+    updated_by = models.ForeignKey(
+        'authentication.User',
+        on_delete=models.SET_NULL,
+        related_name='+',
+        editable=False,
+        null=True,
+        blank=True
     )
     content_type = models.ForeignKey(
         'contenttypes.ContentType',

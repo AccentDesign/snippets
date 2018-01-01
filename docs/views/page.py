@@ -36,6 +36,13 @@ class PageCreateView(LoginRequiredMixin, CreateView):
         else:
             return self.form_invalid(form, formset)
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({
+            'user': self.request.user
+        })
+        return kwargs
+
     def form_valid(self, form, formset):
         self.object = form.save()
         formset.instance = self.object
@@ -69,6 +76,13 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
             return self.form_valid(form, formset)
         else:
             return self.form_invalid(form, formset)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({
+            'user': self.request.user
+        })
+        return kwargs
 
     def form_valid(self, form, formset):
         self.object = form.save()
