@@ -5,7 +5,7 @@
 {% block inner_content %}
     <div class="container content">
         <h1>{{ object.title }}</h1>
-        {% if object.description %}<p>{{ object.description|linebreaks }}</p>{% endif %}
+        {% if object.description %}{{ object.description|linebreaks }}{% endif %}
 
         {% if object.linked_pages.count %}
         <div class="linked-pages">
