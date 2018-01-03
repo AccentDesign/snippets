@@ -155,6 +155,7 @@ AWS_STORAGE_BUCKET_NAME = environ.get('AWS_STORAGE_BUCKET_NAME')
 # Markdownx
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.admonition',
     'markdown.extensions.extra',
     'markdown.extensions.codehilite'
 ]

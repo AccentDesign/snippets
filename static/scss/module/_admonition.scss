@@ -1,0 +1,62 @@
+// Admonition
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.admonition {
+  background: color(secondary);
+  border: solid 1px $border-color;
+  margin-bottom: $generic-margin-bottom;
+  padding: 1rem;
+
+  .admonition-title {
+    font-weight: bold;
+    margin-bottom: .5rem;
+  }
+
+  :last-child {
+    margin-bottom: 0;
+  }
+
+  &.danger {
+    background: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+
+    .admonition-title:before {
+      font-family: "fontello";
+      content: "\e810\00a0";
+    }
+  }
+
+  &.success {
+    background: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+
+    .admonition-title:before {
+      font-family: "fontello";
+      content: "\e805\00a0";
+    }
+  }
+
+  &.warning {
+    background: #fcf8e3;
+    border-color: #fbeed5;
+    color: #c09853;
+
+    .admonition-title:before {
+      font-family: "fontello";
+      content: "\e804\00a0";
+    }
+  }
+
+  &.info {
+    background: #d9edf7;
+    border-color: #bce8f1;
+    color: #3a87ad;
+
+    .admonition-title:before {
+      font-family: "fontello";
+      content: "\f0eb\00a0";
+    }
+  }
+}
