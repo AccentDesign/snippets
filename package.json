@@ -23,7 +23,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.3",
     "gulp-watch": "^4.3.11",
-    "karma-css": "latest",
+    "karma-css": "git+https://git@github.com/accentdesign/karma-css.git",
     "postcss-discard-comments": "^2.0.4",
     "postcss-discard-empty": "^2.1.0",
     "postcss-merge-rules": "^2.1.2",

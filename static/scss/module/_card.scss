@@ -20,7 +20,7 @@
   }
 
   a {
-    @include abs-position(0, 0, 0, 0);
+    @include position(0, 0, 0, 0, absolute);
   }
 
 }

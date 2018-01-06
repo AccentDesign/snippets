@@ -23,9 +23,7 @@ $code-font-family:              'Inconsolata', monospace;
 $colors: (
     // required base colours
     white:                      rgb(255, 255, 255),
-    black:                      rgb(17, 17, 17),
     primary:                    rgb(160, 182, 54),
-    secondary:                  rgb(240, 240, 240),
 
     // custom
     cinnabar:                   rgb(220, 53, 69),
@@ -40,10 +38,8 @@ $font-color:                    rgb(95, 95, 95);
 // buttons
 $buttons: (
     // name                     color                             font-color
-    primary:                    map-get($colors, primary)         map-get($colors, white),
-    secondary:                  map-get($colors, secondary)       map-get($colors, black),
     cinnabar:                   map-get($colors, cinnabar)        map-get($colors, white)
-) !default;
+);
 
 // forms
 $input-use-full-width:          true;
