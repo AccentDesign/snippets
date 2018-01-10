@@ -2,7 +2,7 @@ boto3
 django
 django-autocomplete-light
 django-modelcluster
-git+https://github.com/aaugustin/django-markdownx.git@django-2.0
+git+https://github.com/neutronX/django-markdownx.git@master
 django-storages
 django-taggit
 psycopg2
