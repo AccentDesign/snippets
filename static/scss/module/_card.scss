@@ -9,6 +9,7 @@
   padding: 3rem;
   position: relative;
   text-align: center;
+  transition: $link-transition;
   width: 100%;
 
   &:hover {
