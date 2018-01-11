@@ -65,7 +65,8 @@ $.fn.formset = function () {
             $(this).removeClass(firstFormClass).removeClass(lastFormClass);
             if (index == 0) {
                 $(this).addClass(firstFormClass);
-            } else if (index == visibleForms().length - 1) {
+            } 
+            if (index == visibleForms().length - 1) {
                 $(this).addClass(lastFormClass);
             }
         });
