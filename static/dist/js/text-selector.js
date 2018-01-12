@@ -16,6 +16,6 @@ function SelectText(element) {
     }
 }
 
-$(document).on('click', '.highlight', function () {
-    SelectText(this);
-});
+// $(document).on('click', '.highlight', function () {
+//    SelectText(this);
+//});
