@@ -8,7 +8,10 @@
             <div class="row">
                 <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-3">
                     <form class="search-form" action="{% url 'docs:search' %}" method="get">
-                        <input type="search" name="q" placeholder="Search">
+                        <div class="icon-input">
+                            <input type="search" name="q" placeholder="Search">
+                            <i class="icon-search"></i>
+                        </div>
                         <button type="submit" class="d-hidden"></button>
                     </form>
                 </div>
@@ -18,15 +21,15 @@
     <div class="container content">
         <div class="row">
             <div class="col-md-6">
-                <div class="card">
-                    <div><span class="icon-doc"></span><br>Create a new page</div>
-                    <a href="{% url 'docs:page-create' %}"></a>
+                <div class="card card-porcelain">
+                    <div class="card-content text-center"><span class="icon-doc"></span><br>Create a new page</div>
+                    <a class="overlay" href="{% url 'docs:page-create' %}"></a>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card">
-                    <div><span class="icon-code"></span><br>Create a new snippet</div>
-                    <a href="{% url 'docs:snippet-create' %}"></a>
+                <div class="card card-porcelain">
+                    <div class="card-content text-center"><span class="icon-code"></span><br>Create a new snippet</div>
+                    <a class="overlay" href="{% url 'docs:snippet-create' %}"></a>
                 </div>
             </div>
         </div>

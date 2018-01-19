@@ -1,1 +1,7 @@
-{% if tags %}<ul class="tags">{% for tag in tags|dictsort:"name" %}<li><a href="{% url 'docs:search' %}?q={{ tag }}">{{ tag }}</a></li>{% endfor %}</ul>{% endif %}
+{% if tags %}
+<p>
+    {% for tag in tags|dictsort:"name" %}
+    <a class="tag tag-primary" href="{% url 'docs:search' %}?q={{ tag }}">{{ tag }}</a>
+    {% endfor %}
+</p>
+{% endif %}

@@ -15,8 +15,10 @@
 @import "module/layout";
 @import "module/login";
 @import "module/pygments";
-@import "module/tags";
 
+/* components */
+@import "component-variables";
+@import "components";
 
 /* karma-css utilities */
 @import "karma-css/scss/utilities";

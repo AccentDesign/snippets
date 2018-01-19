@@ -1,16 +1,9 @@
 // Card
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
-.card {
+.card-porcelain {
   background: color(porcelain);
-  border: solid 1px $border-color;
-  border-radius: $global-radius;
-  margin-bottom: 3rem;
-  padding: 3rem;
-  position: relative;
-  text-align: center;
   transition: $link-transition;
-  width: 100%;
 
   &:hover {
     color: color(primary);
@@ -18,10 +11,6 @@
 
   [class*="icon-"]:before {
     font-size: 2rem;
-  }
-
-  a {
-    @include position(0, 0, 0, 0, absolute);
   }
 
 }
