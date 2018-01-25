@@ -1,17 +1,6 @@
 // Pygments
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
-code {
-    font-size: 1.5rem;
-}
-
-.highlight pre {
-    @extend code;
-    display: block;
-    overflow-x: auto;
-    padding: 1.7rem 2rem;
-    white-space: pre;
-}
 
 // Theme (http://jwarby.github.io/jekyll-pygments-themes/languages/javascript.html)
 .highlight .hll { background-color: #ffffcc }
