@@ -1,11 +1,6 @@
 // Variables
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
-/*
-* start with a copy of the current varables file:
-* https://github.com/AccentDesign/karma-css/blob/master/scss/_variables.scss
-*/
-
 
 // Typography
 //––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -22,12 +17,12 @@ $code-font-size:                1.5rem;
 // colors
 $colors: (
     // required base colours
-    white:                      rgb(255, 255, 255),
-    primary:                    rgb(160, 182, 54),
+    "white":                      rgb(255, 255, 255),
+    "primary":                    rgb(160, 182, 54),
 
     // custom
-    cinnabar:                   rgb(220, 53, 69),
-    porcelain:                  rgb(239, 241, 242),
+    "cinnabar":                   rgb(220, 53, 69),
+    "porcelain":                  rgb(239, 241, 242),
 );
 
 // defined colors
@@ -38,7 +33,7 @@ $font-color:                    rgb(95, 95, 95);
 // buttons
 $buttons: (
     // name                     color                             font-color
-    cinnabar:                   map-get($colors, cinnabar)        map-get($colors, white)
+    cinnabar:                   map-get($colors, "cinnabar")      map-get($colors, "white")
 );
 
 // forms

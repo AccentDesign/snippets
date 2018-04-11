@@ -1,24 +1,22 @@
-/* karma-css starter project */
-
 @import "variables";
 @import "fonts";
 
-/* karma-css core */
-@import "karma-css/scss/variables";
-@import "karma-css/scss/import";
+// karma-css core
+@import "node_modules/karma-css/scss/variables";
+@import "node_modules/karma-css/scss/import";
 
-/* add your custom modules here */
+// add your custom modules here
+@import "fontello/css/fontello";
 @import "module/admonition";
 @import "module/card";
-@import "module/fontello";
 @import "module/form";
 @import "module/layout";
 @import "module/login";
 @import "module/pygments";
 
-/* components */
+// components
 @import "component-variables";
 @import "components";
 
-/* karma-css utilities */
-@import "karma-css/scss/utilities";
+// karma-css utilities
+@import "node_modules/karma-css/scss/utilities";

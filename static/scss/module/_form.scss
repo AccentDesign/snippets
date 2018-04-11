@@ -10,13 +10,13 @@
     input,
     select,
     textarea {
-        border-color: color(cinnabar);
+        border-color: color("cinnabar");
     }
 }
 
 .errorlist {
     list-style-type: none;
-    color: color(cinnabar);
+    color: color("cinnabar");
 }
 
 .submit-row {
@@ -27,16 +27,16 @@
 // formset specific
 .dynamic-formset {
     .formset {
-        background: color(porcelain);
+        background: color("porcelain");
         border: solid 1px $border-color;
         margin-bottom: $generic-margin-bottom;
         padding: 1.5rem;
     }
 
     .formset.deleted {
-        background: darken(color(porcelain), 10%);
+        background: color-darken("porcelain", 10%);
         opacity: .75;
-        border: solid 1px color(cinnabar);
+        border: solid 1px color("cinnabar");
     }
 
     .empty-formset {
@@ -81,7 +81,7 @@
 }
 
 .markdownx-preview {
-    background: color(porcelain);
+    background: color("porcelain");
     padding: $input-padding-x $input-padding-y;
 }
 
@@ -110,7 +110,7 @@
 
 .select2-container--default .select2-selection--multiple {
     background-color: $input-background !important;
-    border: $input-border !important;
+    border: solid $input-border-width $input-border-color !important;
     border-radius: $input-border-radius !important;
 }
 
@@ -121,7 +121,7 @@
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: color(secondary) !important;
-    border: $input-border !important;
+    border: solid $input-border-width $input-border-color !important;
     border-radius: $input-border-radius !important;
 }
 

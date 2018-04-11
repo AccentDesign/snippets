@@ -4,7 +4,7 @@
 
 /* header */
 header {
-  background: color(white);
+  background: color("white");
   border-bottom: 1px solid $border-color;
 
   .container {
@@ -47,7 +47,7 @@ header {
 .home {
 
   .banner {
-    background: color(primary);
+    background: color("primary");
     padding-top: 8rem;
     padding-bottom: 8rem;
   }
@@ -58,7 +58,7 @@ header {
   }
 
   .latest-snippet {
-    background: color(porcelain);
+    background: color("porcelain");
     border: solid 1px $border-color;
     border-radius: $global-radius;
     margin-bottom: 3rem;
@@ -97,7 +97,7 @@ header {
 
 /* linked pages block */
 .linked-pages {
-  background: color(porcelain);
+  background: color("porcelain");
   border: solid 1px $border-color;
   margin-bottom: $generic-margin-bottom;
   padding: 1.5rem;

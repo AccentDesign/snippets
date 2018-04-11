@@ -9,10 +9,10 @@ $alert-padding:                 1.5rem 2rem !default;
 
 $alerts: (
     // name                     background                      font-color
-    success:                    lighten(color(green), 35%)      $font-color,
-    danger:                     lighten(color(red), 30%)        $font-color,
-    warning:                    lighten(color(yellow), 35%)     $font-color,
-    info:                       lighten(color(aqua), 15%)       $font-color
+    success:                    color-lighten("green", 35%)      $font-color,
+    danger:                     color-lighten("red", 30%)        $font-color,
+    warning:                    color-lighten("yellow", 35%)     $font-color,
+    info:                       color-lighten("aqua", 15%)       $font-color
 ) !default;
 
 
@@ -35,7 +35,7 @@ $card-margin-bottom:            3rem !default;
 // Checkboxes and Radios
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
-$checkbox-checked-color:        color(primary) !default;
+$checkbox-checked-color:        color("primary") !default;
 $checkbox-font-weight:          400 !default;
 $checkbox-size:                 2.4rem !default;
 $checkbox-tick-width:           .3rem !default;
@@ -48,6 +48,7 @@ $radio-dot-spacing:             .4rem !default;
 $icon-input-icon-color:         $input-placeholder-color !default;
 $icon-input-icon-class-prefix:  'icon-' !default;
 $icon-input-icon-width:         2.67em !default;
+$icon-input-margin-bottom:      $input-margin-bottom !default;
 
 
 // Input Groups
@@ -63,9 +64,9 @@ $switch-height:                 3.4rem !default;
 $switch-width:                  6rem !default;
 $switch-padding:                .4rem !default;
 $switch-default-border-radius:  $global-radius !default;
-$switch-background:             color(secondary) !default;
-$switch-background-on:          color(primary) !default;
-$switch-slider-background:      color(white) !default;
+$switch-background:             color("secondary") !default;
+$switch-background-on:          color("primary") !default;
+$switch-slider-background:      color("white") !default;
 $switch-slider-transition:      .3s !default;
 
 
@@ -82,15 +83,15 @@ $tag-anchor-transition:         background-color linear $animation-speed-fast,
 
 $tags: (
     // name                     background                      font-color
-    primary:                    color(primary)                  color(white)
+    primary:                    color("primary")                color("white")
 ) !default;
 
 
 // Tooltips
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
-$tooltip-background:            rgba(color(black), .9) !default;
-$tooltip-text-color:            color(white) !default;
+$tooltip-background:            color-a("black", .9) !default;
+$tooltip-text-color:            color("white") !default;
 $tooltip-font-size:             85% !default;
 $tooltip-padding:               .5em 1em !default;
 $tooltip-arrow-height:          6px !default;

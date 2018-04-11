@@ -2,11 +2,11 @@
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
 .card-porcelain {
-  background: color(porcelain);
+  background: color("porcelain");
   transition: $link-transition;
 
   &:hover {
-    color: color(primary);
+    color: color("primary");
   }
 
   [class*="icon-"]:before {
