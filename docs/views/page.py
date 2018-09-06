@@ -95,5 +95,5 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
         return self.render_to_response(context)
 
 
-class PageDetailView(DetailView):
+class PageDetailView(LoginRequiredMixin, DetailView):
     model = Page

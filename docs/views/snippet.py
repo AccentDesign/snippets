@@ -6,7 +6,7 @@ from ..forms import SnippetForm
 from ..models import Snippet
 
 
-class SnippetDetailView(DetailView):
+class SnippetDetailView(LoginRequiredMixin, DetailView):
     model = Snippet
 
 

@@ -3,7 +3,8 @@ from django.conf.urls import include
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from django.views.generic import TemplateView
+
+from . import views
 
 
 urlpatterns = [
@@ -11,7 +12,7 @@ urlpatterns = [
     path('auth/', include('authentication.urls')),
     path('markdownx/', include('markdownx.urls')),
     path('', include('docs.urls')),
-    path('', TemplateView.as_view(template_name='home.html'), name='home')
+    path('', views.Home.as_view(), name='home')
 ]
 
 if settings.DEBUG:  # pragma: no cover

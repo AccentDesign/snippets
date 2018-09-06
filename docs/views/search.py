@@ -1,6 +1,7 @@
 import operator
 from functools import partial, reduce
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.postgres.aggregates import StringAgg
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.views.generic import ListView
@@ -11,7 +12,7 @@ from ..models import BaseDoc
 AND = partial(reduce, operator.and_)
 
 
-class SearchView(ListView):
+class SearchView(LoginRequiredMixin, ListView):
     template_name = 'docs/search.html'
     model = BaseDoc
 
