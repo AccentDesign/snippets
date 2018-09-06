@@ -7,4 +7,5 @@ django-storages
 django-taggit
 psycopg2-binary
 pygments
+raven
 uwsgi
