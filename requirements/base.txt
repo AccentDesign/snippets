@@ -5,6 +5,6 @@ django-modelcluster
 git+https://github.com/neutronX/django-markdownx.git@master
 django-storages
 django-taggit
-psycopg2
+psycopg2-binary
 pygments
 uwsgi
