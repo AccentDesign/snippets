@@ -58,7 +58,7 @@ header {
   }
 
   .latest-snippet {
-    background: color("porcelain");
+    background: color("solitude");
     border: solid 1px $border-color;
     border-radius: $global-radius;
     margin-bottom: 3rem;
@@ -86,7 +86,7 @@ header {
   .result {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    
+
     &:not(:last-child) {
       border-bottom: solid 1px $border-color;
     }
@@ -97,7 +97,7 @@ header {
 
 /* linked pages block */
 .linked-pages {
-  background: color("porcelain");
+  background: color("solitude");
   border: solid 1px $border-color;
   margin-bottom: $generic-margin-bottom;
   padding: 1.5rem;

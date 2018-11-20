@@ -8,9 +8,11 @@
             <div class="row">
             <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                 <div class="login-logo">
-                    <a href="/"><img src="{% static 'dist/images/logo.png' %}"></a>
+                    <h1><a href="/"><img src="{% static 'dist/images/logo.png' %}" alt="home"></a></h1>
                 </div>
-                {% block box_content %}{% endblock %}
+                <section>
+                  {% block box_content %}{% endblock %}
+                </section>
             </div>
             </div>
         </div>
