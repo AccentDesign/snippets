@@ -1,30 +1,40 @@
-FROM        python:3.6
+FROM        python:3.6-alpine
 
-# Build args
+# Build args:
 ARG         REQUIREMENTS_FILE=/build/requirements/base.txt
 
-# Copy in your requirements folder
+# Copy in your requirements folder:
 ADD         requirements /build/requirements/
 
-# Install dependencies
+# Install runtime, build & python dependencies:
 RUN         set -ex \
-            && apt-get update \
-            && apt-get install -y \
-                gcc \
-                libjpeg62 \
-                libjpeg62-turbo-dev \
-                libpq-dev \
+            && apk update \
+            && apk add --no-cache \
+                # postgres
+                libpq \
                 postgresql-client \
-            --no-install-recommends \
-            && rm -rf /var/lib/apt/lists/ \
-            && pip install --no-cache-dir -r $REQUIREMENTS_FILE
+                # pillow
+                jpeg-dev \
+                zlib-dev \
+                # misc
+                make \
+            && apk add --no-cache --virtual .build-deps \
+                gcc \
+                git \
+                libc-dev \
+                linux-headers \
+                musl-dev \
+                postgresql-dev \
+                python3-dev \
+            && pip install --no-cache-dir -r $REQUIREMENTS_FILE \
+            && apk del .build-deps
 
-# Copy your application code to the container
+# Copy your application code to the container:
 RUN         mkdir /code/
 WORKDIR     /code/
 ADD         . /code/
 
-# Upload perms
+# Upload perms:
 RUN         chmod -Rf 777 /code/public/media
 
 # Add any custom, static environment variables needed by Django:
