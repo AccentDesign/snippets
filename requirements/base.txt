@@ -7,5 +7,5 @@ django-storages
 django-taggit
 psycopg2-binary
 pygments
-sentry_sdk
+sentry-sdk
 uwsgi
