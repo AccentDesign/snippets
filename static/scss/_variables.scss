@@ -18,7 +18,7 @@ $code-font-size:                1.5rem;
 $colors: (
     // required base colours
     "white":                      rgb(255, 255, 255),
-    "primary":                    rgb(65, 118, 144),
+    "primary":                    rgb(34, 53, 76),
 
     // custom
     "cinnabar":                   rgb(220, 53, 69),
@@ -29,9 +29,6 @@ $colors: (
 $body-background:               rgb(255, 255, 255);
 $code-background:               rgb(250, 251, 252);
 $font-color:                    rgb(32, 33, 36);
-
-// links
-$link-color:                    darken(map-get($colors, "primary"), 10%);
 
 // buttons
 $buttons: (

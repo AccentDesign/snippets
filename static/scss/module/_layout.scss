@@ -4,8 +4,7 @@
 
 /* header */
 header {
-  background: color("white");
-  border-bottom: 1px solid $border-color;
+  background: color("primary");
 
   .container {
     height: 6rem;
@@ -27,6 +26,10 @@ header {
     li + li {
       margin-left: 2rem;
     }
+
+    li > a {
+      color: color("white")
+    }
   }
 
 }
@@ -47,7 +50,7 @@ header {
 .home {
 
   .banner {
-    background: color("primary");
+    background: color-lighten("primary", 2%);
     padding-top: 8rem;
     padding-bottom: 8rem;
   }
