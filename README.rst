@@ -14,7 +14,13 @@ Bare bones starter project complete with the following
 Screenshot
 **********
 
-.. figure:: screenshot.png
+.. figure:: screenshot_1.png
+   :width: 728 px
+
+.. figure:: screenshot_2.png
+   :width: 728 px
+
+.. figure:: screenshot_3.png
    :width: 728 px
 
 Getting Started
