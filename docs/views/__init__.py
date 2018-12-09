@@ -13,5 +13,6 @@ from .snippet import (
     SnippetUpdateView
 )
 from .tag import (
-    TagsAutocomplete
+    TagsAutocomplete,
+    TagsView
 )

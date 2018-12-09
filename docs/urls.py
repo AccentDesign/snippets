@@ -13,5 +13,6 @@ urlpatterns = [
     path('snippets/create/', SnippetCreateView.as_view(), name='snippet-create'),
     path('snippets/<slug:slug>/', SnippetDetailView.as_view(), name='snippet-detail'),
     path('snippets/<slug:slug>/update/', SnippetUpdateView.as_view(), name='snippet-update'),
+    path('tags/', TagsView.as_view(), name='tags'),
     path('tags/autocomplete/', TagsAutocomplete.as_view(), name='tag-autocomplete')
 ]

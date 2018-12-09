@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block page_title %}Search Results{% endblock %}
+{% block body_class %}{% endblock %}
+{% block inner_content %}
+    <div class="banner">
+        <div class="container">
+            <div class="banner-title d-inline-block">
+                Tags
+            </div>
+            {% with total=object_list.count %}
+            <small class="c-white muted">{{ total }} tags found</small>
+            {% endwith %}
+        </div>
+    </div>
+    <div class="container content">
+        {% if object_list %}
+        <p>
+            {% for tag in object_list %}
+            <a class="tag tag-primary" href="{% url 'docs:search' %}?q={{ tag }}">{{ tag }} <small>({{ tag.taggit_taggeditem_items.count }})</small></a>
+            {% endfor %}
+        </p>
+        {% endif %}
+    </div>
+{% endblock %}

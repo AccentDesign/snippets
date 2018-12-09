@@ -71,6 +71,12 @@
       "css": "leaf",
       "code": 59392,
       "src": "fontawesome"
+    },
+    {
+      "uid": "a3f89e106175a5c5c4e9738870b12e55",
+      "css": "tags",
+      "code": 59399,
+      "src": "fontawesome"
     }
   ]
 }
