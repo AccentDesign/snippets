@@ -12,6 +12,7 @@ class PageForm(forms.ModelForm):
         model = Page
         exclude = ('content_type', )
         widgets = {
+            'description': forms.widgets.Textarea(attrs={'rows': 5}),
             'content': MarkdownxWidget,
             'linked_pages': autocomplete.ModelSelect2Multiple(url='docs:page-autocomplete'),
             'tags': autocomplete.TaggitSelect2('docs:tag-autocomplete')
@@ -26,7 +27,7 @@ class PageForm(forms.ModelForm):
 
         instance = super().save(commit=False)
 
-        if not self.instance.pk or not self.instance.created_by:
+        if not self.instance.created_by:
             instance.created_by = self.user
         instance.updated_by = self.user
 
@@ -60,6 +61,7 @@ class SnippetForm(forms.ModelForm):
         model = Snippet
         exclude = ('content_type', )
         widgets = {
+            'description': forms.widgets.Textarea(attrs={'rows': 5}),
             'content': MarkdownxWidget,
             'tags': autocomplete.TaggitSelect2('docs:tag-autocomplete')
         }
@@ -73,7 +75,7 @@ class SnippetForm(forms.ModelForm):
 
         instance = super().save(commit=False)
 
-        if not self.instance.pk or not self.instance.created_by:
+        if not self.instance.created_by:
             instance.created_by = self.user
         instance.updated_by = self.user
 

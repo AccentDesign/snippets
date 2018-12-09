@@ -1,17 +1,54 @@
 // Card
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
-.card-solitude {
-  background: color("solitude");
-  transition: $link-transition;
-  color: color("primary");
+.cards {
+  margin-top: -2rem;
+  margin-bottom: 2rem;
+}
 
-  &:hover {
-    color: color-darken("primary", $darken-hover-percent);
+.card {
+  @include box-shadow(0, 1px, 3px, rgba(0, 0, 0, .12));
+  background: color("white");
+
+  .card-icon {
+    display: inline-block;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    line-height: 3rem;
   }
 
-  [class*="icon-"]:before {
-    font-size: 2rem;
+  &.card-blue {
+    .card-icon {
+      background: color-a("blue", .2);
+      i { color: color("blue"); }
+    }
   }
 
+  &.card-green {
+    .card-icon {
+      background: color-a("green", .2);
+      i { color: color("green"); }
+    }
+  }
+
+  &.card-orange {
+    .card-icon {
+      background: color-a("orange", .2);
+      i { color: color("orange"); }
+    }
+  }
+
+  &.card-red {
+    .card-icon {
+      background: color-a("red", .2);
+      i { color: color("red"); }
+    }
+  }
+
+  h4 {
+    margin-bottom: .5rem;
+  }
 }

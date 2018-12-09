@@ -18,15 +18,17 @@ $code-font-size:                1.5rem;
 $colors: (
     // required base colours
     "white":                      rgb(255, 255, 255),
-    "primary":                    rgb(34, 53, 76),
+    "primary":                    rgb(42, 170, 233),
+
+    "midnight":                   rgb(34, 46, 62),
 
     // custom
     "cinnabar":                   rgb(220, 53, 69),
-    "solitude":                   rgb(248, 249, 250),
+    "solitude":                   rgb(245, 248, 250),
 );
 
 // defined colors
-$body-background:               rgb(255, 255, 255);
+$body-background:               rgb(245, 248, 250);
 $code-background:               rgb(250, 251, 252);
 $font-color:                    rgb(32, 33, 36);
 

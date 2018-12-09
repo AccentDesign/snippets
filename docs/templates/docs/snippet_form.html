@@ -3,17 +3,31 @@
 {% block page_title %}{% if object.id %}Update{% else %}Create{% endif %} Snippet{% endblock %}
 {% block body_class %}snippet-form{% endblock %}
 {% block inner_content %}
-    <div class="container content">
-        <form class="form" method="post" novalidate>
+    <div class="banner">
+        <div class="container">
+            <div class="banner-title">
+                {% if object.id %}Update{% else %}Create{% endif %} Snippet
+            </div>
+        </div>
+    </div>
+
+    <form class="form" method="post" novalidate>
+
+        <div class="container content">
+
             {% csrf_token %}
 
             {% for field in form %}
                 {% include 'partials/form_field.html' %}
             {% endfor %}
 
-            <input type="submit" class="button button-primary pull-right" value="Save Snippet">
-        </form>
-    </div>
+        </div>
+
+        <div class="container content text-right">
+            <input type="submit" class="button button-primary" value="Save Snippet">
+        </div>
+
+    </form>
 {% endblock %}
 
 {% block extra_js %}

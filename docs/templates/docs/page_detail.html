@@ -3,19 +3,29 @@
 {% block page_title %}{{ object.title }}{% endblock %}
 {% block body_class %}page{% endblock %}
 {% block inner_content %}
+    <div class="banner">
+        <div class="container">
+            <div class="banner-title">
+                {{ object.title }}
+            </div>
+            <p class="small muted c-white">Created: {{ object.created_on }} Updated: {{ object.updated_on }}</p>
+        </div>
+    </div>
+
     <div class="container content">
-        <h1>{{ object.title }}</h1>
-        {% if object.description %}{{ object.description|linebreaks }}{% endif %}
+        {% if object.description %}
+        {{ object.description|linebreaks }}
+        <hr>
+        {% endif %}
 
         {% if object.linked_pages.count %}
-        <div class="linked-pages">
-            <div class="h3">Linked Pages</div>
-            <ul>
-            {% for page in object.linked_pages.all %}
-                <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
-            {% endfor %}
-            </ul>
-        </div>
+        <h3>Linked Pages</h3>
+        <ul>
+        {% for page in object.linked_pages.all %}
+            <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+        {% endfor %}
+        </ul>
+        <hr>
         {% endif %}
 
         {% for item in object.content_items.all %}
@@ -24,10 +34,14 @@
                 <div class="hover-link h4">{{ item.snippet }} <a href="{{ item.snippet.get_absolute_url }}"><i class="icon-link"></i></a></div>
                 {{ item.snippet.formatted_content|safe }}
             {% endif %}
+            {% if forloop.last %}<hr>{% endif %}
         {% endfor %}
 
-        <p class="small muted">Created: {{ object.created_on }} Updated: {{ object.updated_on }}</p>
         {% include 'docs/partials/tags.html' with tags=object.tags.all %}
-        <a href="{% url 'docs:page-update' object.slug %}" class="button">Update Page</a>
+
+    </div>
+
+    <div class="container content text-right">
+        <a href="{% url 'docs:page-update' object.slug %}" class="button button-primary">Update Page</a>
     </div>
 {% endblock %}

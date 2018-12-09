@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 {% block page_title %}Search Results{% endblock %}
-{% block body_class %}search{% endblock %}
+{% block body_class %}{% endblock %}
 {% block inner_content %}
+    <div class="banner">
+        <div class="container">
+            <div class="banner-title d-inline-block">
+                Search Results
+            </div>
+            {% with total=object_list.count %}
+            <small class="c-white muted">{{ total }} match{{ total|pluralize:"es" }} found</small>
+            {% endwith %}
+        </div>
+    </div>
     <div class="container content">
         <div class="row">
             <div class="col-lg-6">
@@ -15,12 +25,9 @@
                 </form>
             </div>
         </div>
-        {% with total=object_list.count %}
-            <h2>{% trans 'Search results' %} <small class="muted">{{ total }} match{{ total|pluralize:"es" }} found</small></h2>
-        {% endwith %}
         {% for object in object_list %}
-        <div class="result">
-            <a href="{{ object.specific.get_absolute_url }}" class="h3">{{ object.title }}</a> <small class="muted">{{ object.content_type }}</small>
+        <div class="search-result">
+            <a class="h3 c-primary" href="{{ object.specific.get_absolute_url }}">{{ object.title }}</a> <small class="muted">{{ object.content_type }}</small>
             <p>{{ object.description }}</p>
             {% include 'docs/partials/tags.html' with tags=object.specific.tags.all %}
         </div>

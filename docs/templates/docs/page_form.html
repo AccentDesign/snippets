@@ -1,10 +1,19 @@
 {% extends 'base.html' %}
 {% load app_tags i18n static %}
 {% block page_title %}{% if object.id %}Update{% else %}Create{% endif %} Page{% endblock %}
-{% block body_class %}page-form{% endblock %}
+{% block body_class %}{% endblock %}
 {% block inner_content %}
-    <div class="container content">
-        <form class="form" method="post" novalidate>
+    <div class="banner">
+        <div class="container">
+            <div class="banner-title">
+                {% if object.id %}Update{% else %}Create{% endif %} Page
+            </div>
+        </div>
+    </div>
+
+    <form class="form" method="post" novalidate>
+
+        <div class="container content">
             {% csrf_token %}
 
             {% for field in form %}
@@ -17,6 +26,8 @@
                  data-form-prefix="content_items"
                  data-form-class="formset"
                  data-empty-form-class="empty-formset">
+
+                <label>Page Contents</label>
 
                 {% for formset_form in formset.forms %}
                     <div class="formset{% if formset_form.DELETE.value %} deleted{% endif %}{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %}">
@@ -49,21 +60,24 @@
                     </div>
                 {% endwith %}
 
-                <a class="button add-row">Add Content</a>
+                <a class="d-block button button-primary button-outline add-row">Add Content</a>
 
             </div>
 
-            <input type="submit" class="button button-primary pull-right" value="Save Page">
+        </div>
 
-        </form>
-    </div>
+        <div class="container content text-right">
+           <input type="submit" class="button button-primary" value="Save Page">
+        </div>
+
+    </form>
 {% endblock %}
 
 {% block extra_js %}
     {{ form.media }}
     {{ formset.media }}
     <script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{% static 'dist/js/form-tools.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dist/js/form-tools.js' %}"></script>
     <script>
         $('.dynamic-formset').formset();
     </script>

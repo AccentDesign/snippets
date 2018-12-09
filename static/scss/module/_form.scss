@@ -27,7 +27,7 @@
 // formset specific
 .dynamic-formset {
     .formset {
-        background: color("solitude");
+        background: color("white");
         border: solid 1px $border-color;
         margin-bottom: $generic-margin-bottom;
         padding: 1.5rem;
@@ -64,6 +64,10 @@
         display: none !important;
     }
 
+    .add-row {
+        margin-bottom: 2rem;
+    }
+
 }
 
 
@@ -75,13 +79,11 @@
 }
 
 .markdownx-editor {
-    font-family: $code-font-family;
     margin-bottom: 0;
     resize: vertical;
 }
 
 .markdownx-preview {
-    background: color("solitude");
     padding: $input-padding-x $input-padding-y;
 }
 

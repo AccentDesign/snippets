@@ -1,11 +1,8 @@
 {% if snippet %}
-<div class="latest-snippet">
-    <div class="snippet-title">Latest Snippet<a class="pull-right" href="{{ snippet.get_absolute_url }}">Goto Snippet</a></div>
-    <div class="snippet-content">
-        <h3>{{ snippet.title }}</h3>
-        {% if snippet.description %}{{ snippet.description|linebreaks }}{% endif %}
-        {{ snippet.formatted_content|safe }}
-        <span class="muted small">Created: {{ snippet.created_on }}</span>
-    </div>
-</div>
+<p class="strong"><a href="{{ snippet.get_absolute_url }}">{{ snippet.title }}</a></p>
+{% if snippet.description %}
+<p class="muted">{{ snippet.description|linebreaksbr }}</p>
+{% endif %}
+{{ snippet.formatted_content|safe }}
+<span class="muted small">Created: {{ snippet.created_on }}</span>
 {% endif %}

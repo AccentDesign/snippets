@@ -1,10 +1,8 @@
 // Layout
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
-
-/* header */
 header {
-  background: color("primary");
+  background: color("white");
 
   .container {
     height: 6rem;
@@ -27,17 +25,18 @@ header {
       margin-left: 2rem;
     }
 
-    li > a {
-      color: color("white")
-    }
   }
 
 }
 
 /* body */
 .content {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+.content-padded {
   padding-top: 5rem;
-  padding-bottom: 8rem;
+  padding-bottom: 5rem;
 }
 
 /* search form */
@@ -46,67 +45,36 @@ header {
   height: 5rem;
 }
 
-/* home page */
-.home {
+/* banner */
+.banner {
+  background: color("primary");
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 
-  .banner {
-    background: color-lighten("primary", 2%);
+  &.banner-padded {
     padding-top: 8rem;
     padding-bottom: 8rem;
   }
 
+  .banner-title {
+    color: color("white");
+    font-size: 3rem;
+  }
+
   .search-form form,
   .search-form .icon-input {
+    margin-top: 3rem;
     margin-bottom: 0;
   }
+}
 
-  .latest-snippet {
-    background: color("solitude");
-    border: solid 1px $border-color;
-    border-radius: $global-radius;
-    margin-bottom: 3rem;
-  }
+/* search results */
+.search-result {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
 
-  .latest-snippet .snippet-title {
-    font-weight: bold;
-    padding: 1rem 2rem;
+  &:not(:last-child) {
     border-bottom: solid 1px $border-color;
-  }
-
-  .latest-snippet .snippet-content {
-    padding: 2rem;
-  }
-
-  .latest {
-    margin-bottom: 3rem;
-  }
-}
-
-
-/* search page */
-.search {
-
-  .result {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-
-    &:not(:last-child) {
-      border-bottom: solid 1px $border-color;
-    }
-
-  }
-
-}
-
-/* linked pages block */
-.linked-pages {
-  background: color("solitude");
-  border: solid 1px $border-color;
-  margin-bottom: $generic-margin-bottom;
-  padding: 1.5rem;
-
-  ul {
-    margin-bottom: 0;
   }
 
 }
@@ -115,10 +83,11 @@ header {
 .hover-link {
 
   a {
-    display: none;
+    display: inline;
+    visibility: hidden;
   }
 
-  &:hover a{
-    display: inline;
+  &:hover a {
+    visibility: visible;
   }
 }

@@ -1,5 +1,5 @@
 
-.icon-doc:before { content: '\e800'; } /* '' */
+.icon-leaf:before { content: '\e800'; } /* '' */
 .icon-link:before { content: '\e801'; } /* '' */
 .icon-down-big:before { content: '\e802'; } /* '' */
 .icon-up-big:before { content: '\e803'; } /* '' */
@@ -8,5 +8,5 @@
 .icon-search:before { content: '\e806'; } /* '' */
 .icon-attention-circled:before { content: '\e810'; } /* '' */
 .icon-lightbulb:before { content: '\f0eb'; } /* '' */
-.icon-code:before { content: '\f121'; } /* '' */
+.icon-doc-inv:before { content: '\f15b'; } /* '' */
 .icon-trash:before { content: '\f1f8'; } /* '' */
