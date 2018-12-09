@@ -17,7 +17,7 @@
         {% if object_list %}
         <p>
             {% for tag in object_list %}
-            <a class="tag tag-primary" href="{% url 'docs:search' %}?q={{ tag }}">{{ tag }} <small>({{ tag.taggit_taggeditem_items.count }})</small></a>
+            <a class="tag tag-primary mb-1" href="{% url 'docs:search' %}?q={{ tag }}">{{ tag }} <small>({{ tag.taggit_taggeditem_items.count }})</small></a>
             {% endfor %}
         </p>
         {% endif %}
