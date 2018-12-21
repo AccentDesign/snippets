@@ -15,11 +15,11 @@
     </div>
     <div class="container content">
         {% if object_list %}
-        <p>
+        <ul>
             {% for tag in object_list %}
-            <a class="tag tag-primary mb-1" href="{% url 'docs:search' %}?q={{ tag }}">{{ tag }} <small>({{ tag.taggit_taggeditem_items.count }})</small></a>
+            <li><a href="{% url 'docs:search' %}?q={{ tag }}">{{ tag }} <span class="c-gray">[{{ tag.taggit_taggeditem_items.count }}]</span></a></li>
             {% endfor %}
-        </p>
+        </ul>
         {% endif %}
     </div>
 {% endblock %}
