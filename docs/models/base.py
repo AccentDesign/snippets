@@ -1,8 +1,7 @@
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.functional import cached_property
-from django.utils.translation import ugettext_lazy as _
-
+from django.utils.translation import gettext_lazy as _
 from modelcluster.models import ClusterableModel
 from taggit.managers import TaggableManager
 
@@ -12,43 +11,32 @@ def get_default_form_content_type():
 
 
 class BaseDoc(ClusterableModel):
-    """ Doc base class """
+    """Doc base class"""
 
-    title = models.CharField(
-        max_length=150
-    )
-    slug = models.SlugField(
-        max_length=100,
-        unique=True
-    )
-    description = models.TextField(
-        blank=True
-    )
-    created_on = models.DateTimeField(
-        auto_now_add=True
-    )
+    title = models.CharField(max_length=150)
+    slug = models.SlugField(max_length=100, unique=True)
+    description = models.TextField(blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
-        'authentication.User',
+        "authentication.User",
         on_delete=models.SET_NULL,
         editable=False,
         null=True,
-        blank=True
+        blank=True,
     )
-    updated_on = models.DateTimeField(
-        auto_now=True
-    )
+    updated_on = models.DateTimeField(auto_now=True)
     updated_by = models.ForeignKey(
-        'authentication.User',
+        "authentication.User",
         on_delete=models.SET_NULL,
-        related_name='+',
+        related_name="+",
         editable=False,
         null=True,
-        blank=True
+        blank=True,
     )
     content_type = models.ForeignKey(
-        'contenttypes.ContentType',
-        related_name='docs',
-        on_delete=models.SET(get_default_form_content_type)
+        "contenttypes.ContentType",
+        related_name="docs",
+        on_delete=models.SET(get_default_form_content_type),
     )
 
     tags = TaggableManager(blank=True)
@@ -62,8 +50,10 @@ class BaseDoc(ClusterableModel):
         return self.title
 
     class Meta:
-        ordering = ['title', ]
-        verbose_name = _('doc')
+        ordering = [
+            "title",
+        ]
+        verbose_name = _("doc")
 
     @cached_property
     def specific(self):

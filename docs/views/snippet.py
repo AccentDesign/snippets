@@ -16,9 +16,7 @@ class SnippetCreateView(LoginRequiredMixin, CreateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        kwargs.update({
-            'user': self.request.user
-        })
+        kwargs.update({"user": self.request.user})
         return kwargs
 
 
@@ -28,7 +26,5 @@ class SnippetUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        kwargs.update({
-            'user': self.request.user
-        })
+        kwargs.update({"user": self.request.user})
         return kwargs

@@ -1,36 +1,26 @@
 from django.db import models
 from django.urls import reverse
-
-from modelcluster.fields import ParentalKey
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
+from modelcluster.fields import ParentalKey
 
 from .base import BaseDoc
 
 
 class PageContentItem(models.Model):
-    """ Page content """
+    """Page content"""
 
-    doc = ParentalKey(
-        'BaseDoc',
-        on_delete=models.CASCADE,
-        related_name='content_items'
-    )
-    content = MarkdownxField(
-        blank=True
-    )
+    doc = ParentalKey("BaseDoc", on_delete=models.CASCADE, related_name="content_items")
+    content = MarkdownxField(blank=True)
     snippet = models.ForeignKey(
-        'docs.Snippet',
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True
+        "docs.Snippet", on_delete=models.SET_NULL, null=True, blank=True
     )
-    order = models.PositiveIntegerField(
-        default=0
-    )
+    order = models.PositiveIntegerField(default=0)
 
     class Meta:
-        ordering = ['order', ]
+        ordering = [
+            "order",
+        ]
 
     @property
     def formatted_content(self):
@@ -38,12 +28,9 @@ class PageContentItem(models.Model):
 
 
 class Page(BaseDoc):
-    """ Page model """
+    """Page model"""
 
-    linked_pages = models.ManyToManyField(
-        'self',
-        blank=True
-    )
+    linked_pages = models.ManyToManyField("self", blank=True)
 
     def get_absolute_url(self):
-        return reverse('docs:page-detail', kwargs={'slug': self.slug})
+        return reverse("docs:page-detail", kwargs={"slug": self.slug})

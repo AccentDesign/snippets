@@ -1,20 +1,3 @@
-# This workflow will build and push a new container image to Amazon ECR,
-# and then will deploy a new task definition to Amazon ECS, on every push
-# of the specified branches.
-#
-# Images will be tagged using the branch name as the tag. 
-#
-# To use this workflow, you will need to complete the following set-up steps:
-#
-# 1. Create an ECR repository to store your images.
-#    For example: `aws ecr create-repository --repository-name my-ecr-repo --region us-east-2`.
-#    Replace the value of `ECR_REPOSITORY` in the workflow below with your repository's name.
-#    Replace the value of `aws-region` in the workflow below with your repository's region.
-#
-# 2. Store an IAM user access key in GitHub Actions secrets named `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
-#    See the documentation for each action used below for the recommended IAM policies for this IAM user,
-#    and best practices on handling the access key credentials.
-
 on:
   push:
     branches:
@@ -30,7 +13,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v3
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -46,7 +29,7 @@ jobs:
     - name: Extract current branch name
       id: extract-branch
       shell: bash
-      run: echo "::set-output name=branch::${GITHUB_REF##*/}"
+      run: echo "branch=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
@@ -57,4 +40,3 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"

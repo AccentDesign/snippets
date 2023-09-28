@@ -4,13 +4,14 @@ from django.views.generic import CreateView, UpdateView
 from django.views.generic.detail import DetailView
 
 from app.views.mixins import AutoCompleteView
-from ..forms import PageForm, PageContentItemFormset, SnippetForm
+
+from ..forms import PageContentItemFormset, PageForm
 from ..models import Page
 
 
 class PageAutocomplete(AutoCompleteView):
     model = Page
-    filter_arg = 'title__istartswith'
+    filter_arg = "title__istartswith"
 
 
 class PageCreateView(LoginRequiredMixin, CreateView):
@@ -38,9 +39,7 @@ class PageCreateView(LoginRequiredMixin, CreateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        kwargs.update({
-            'user': self.request.user
-        })
+        kwargs.update({"user": self.request.user})
         return kwargs
 
     def form_valid(self, form, formset):
@@ -79,9 +78,7 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        kwargs.update({
-            'user': self.request.user
-        })
+        kwargs.update({"user": self.request.user})
         return kwargs
 
     def form_valid(self, form, formset):

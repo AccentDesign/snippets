@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = ""
+authors = ["Stuart <stuart@accentdesign.co.uk>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+boto3 = "*"
+django = "*"
+django-autocomplete-light = "*"
+django-modelcluster = "*"
+django-markdownx = "*"
+django-storages = "*"
+django-taggit = "*"
+psycopg2-binary = "*"
+pygments = "*"
+sentry-sdk = "*"
+
+[tool.poetry.group.dev.dependencies]
+black = "*"
+httpx = "*"
+mypy = "*"
+ruff = "*"
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.black]
+line-length = 88
+exclude = '''
+  /(
+    migrations
+  )/
+'''
+
+[tool.ruff]
+select = ["E", "F", "I"]
+ignore = [
+    "E501",  # line too long, handled by black
+    "F403",  # based on the current code, too many to go through
+    "F405",  # based on the current code, too many to go through
+]
+exclude = [
+    "migrations",
+]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.isort]
+combine-as-imports = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

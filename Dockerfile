@@ -1,73 +1,39 @@
-FROM        python:3.6-alpine
+FROM        accent/python-uvicorn-gunicorn:3.11-slim as base
 
-# Build args:
-ARG         REQUIREMENTS_FILE=/build/requirements/base.txt
+ARG         ENVIRONMENT=production
 
-# Copy in your requirements folder:
-ADD         requirements /build/requirements/
+WORKDIR     /app
 
-# Install runtime, build & python dependencies:
-RUN         set -ex \
-            && apk update \
-            && apk add --no-cache \
-                # postgres
-                libpq \
-                postgresql-client \
-                # pillow
-                jpeg-dev \
-                zlib-dev \
-                # misc
-                make \
-            && apk add --no-cache --virtual .build-deps \
-                gcc \
-                git \
-                libc-dev \
-                linux-headers \
-                musl-dev \
-                postgresql-dev \
-                python3-dev \
-            && pip install --no-cache-dir -r $REQUIREMENTS_FILE \
-            && apk del .build-deps
+COPY        ./pyproject.toml ./poetry.lock ./
 
-# Copy your application code to the container:
-RUN         mkdir /code/
-WORKDIR     /code/
-ADD         . /code/
+RUN         pip install poetry \
+            && poetry config virtualenvs.create false \
+            && poetry install $(test "$ENVIRONMENT" = production && echo "--only main") --no-interaction --no-ansi \
+            && rm -rf /root/.cache/pypoetry
 
-# Upload perms:
-RUN         chmod -Rf 777 /code/public/media
+FROM        base as final
 
-# Add any custom, static environment variables needed by Django:
-ENV         PYTHONUNBUFFERED=1 \
-            DJANGO_SETTINGS_MODULE=app.settings \
-            SECRET_KEY='***** change me *****' \
-            ALLOWED_HOSTS=* \
-            RDS_HOSTNAME=db \
-            RDS_PORT=5432 \
-            RDS_DB_NAME=postgres \
-            RDS_USERNAME=postgres \
-            RDS_PASSWORD=password \
-            EMAIL_HOST=mail \
-            EMAIL_PORT=1025 \
-            EMAIL_HOST_USER=user \
-            EMAIL_HOST_PASSWORD=password
+ENV         PYTHONDONTWRITEBYTECODE=1
+ENV         PYTHONFAULTHANDLER=1
+ENV         PYTHONPATH=/app
+ENV         APP_MODULE=app.asgi:app
+ENV         WORKER_CLASS=app.asgi.DjangoUvicornWorker
+ENV         DJANGO_MANAGEPY_MIGRATE=on
+ENV         DJANGO_MANAGEPY_COLLECTSTATIC=on
+ENV         DJANGO_SETTINGS_MODULE=app.settings
+ENV         SECRET_KEY='***** change me *****'
+ENV         ALLOWED_HOSTS=*
+ENV         CSRF_TRUSTED_ORIGINS=http://*
+ENV         RDS_HOSTNAME=db
+ENV         RDS_PORT=5432
+ENV         RDS_DB_NAME=postgres
+ENV         RDS_USERNAME=postgres
+ENV         RDS_PASSWORD=password
+ENV         EMAIL_HOST=mail
+ENV         EMAIL_PORT=1025
+ENV         EMAIL_HOST_USER=user
+ENV         EMAIL_HOST_PASSWORD=password
 
-# uWSGI configuration:
-ENV         UWSGI_WSGI_FILE=app/wsgi.py \
-            UWSGI_HTTP=:8000 \
-            UWSGI_MASTER=1 \
-            UWSGI_WORKERS=2 \
-            UWSGI_THREADS=8 \
-            UWSGI_UID=1000 \
-            UWSGI_GID=2000 \
-            UWSGI_LAZY_APPS=1 \
-            UWSGI_WSGI_ENV_BEHAVIOR=holy
+WORKDIR     /app
 
-# Docker entrypoint:
-ENV         DJANGO_MANAGEPY_MIGRATE=on \
-            DJANGO_MANAGEPY_COLLECTSTATIC=on
-
-ENTRYPOINT  ["/code/docker-entrypoint.sh"]
-
-# Start uWSGI:
-CMD         ["uwsgi", "--http-auto-chunked", "--http-keepalive"]
+COPY        . .
