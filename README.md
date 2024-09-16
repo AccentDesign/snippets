@@ -1,16 +1,18 @@
 # Snippets
 
-Bare bones starter project complete with the following
-
-- Email authentication
-- Login, password reset, password change
-- Karma CSS
+Website for storing code snippets.
 
 ### Screenshot
 
 ![Screenshot](screenshot_1.png)
 ![Screenshot](screenshot_2.png)
 ![Screenshot](screenshot_3.png)
+
+## Getting Started
+
+```bash
+docker compose up --watch
+```
 
 ## Python Packages
 
