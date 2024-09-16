@@ -137,15 +137,50 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# AWS
 
-STATICFILES_STORAGE = "app.storages.S3StaticStorage"
-STATICFILES_LOCATION = "static"
-STATICFILES_DIRS = [
-    join(BASE_DIR, "static"),
-]
-STATIC_ROOT = join(BASE_DIR, "public/static")
+AWS_ACCESS_KEY_ID = environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = environ.get("AWS_STORAGE_BUCKET_NAME")
+AWS_S3_REGION_NAME = environ.get("AWS_S3_REGION_NAME")
+
+
+# Storages
+
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "default_acl": "private",
+            "location": "",
+            "querystring_auth": True,
+            "file_overwrite": False,
+            "gzip": False,
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "default_acl": "public-read",
+            "location": "static",
+            "querystring_auth": False,
+            "file_overwrite": True,
+            "gzip": True,
+            "object_parameters": {
+                "CacheControl": "max-age=86400",
+            },
+        },
+    },
+}
+
+
+# Static
+
+STATICFILES_DIRS = [join(BASE_DIR, "static")]
 STATIC_URL = "/static/"
+
+
+# Media
 
 MEDIA_ROOT = join(BASE_DIR, "public/media")
 MEDIA_URL = "/media/"
@@ -153,22 +188,12 @@ MEDIA_URL = "/media/"
 
 # File Storage
 
-DEFAULT_FILE_STORAGE = "app.storages.S3PublicStorage"
-FILE_UPLOAD_MAX_MEMORY_SIZE = (
-    5 * 1024 * 1024
-)  # 5MB - Cloudflare limit on existing plan is 100MB
-AWS_ACCESS_KEY_ID = environ.get("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = environ.get("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = environ.get("AWS_STORAGE_BUCKET_NAME")
-AWS_S3_REGION_NAME = environ.get("AWS_S3_REGION_NAME")
-AWS_S3_CUSTOM_DOMAIN = None  # Add for cloudfront etc
-AWS_S3_OBJECT_PARAMETERS = {
-    "CacheControl": "max-age=86400",
-}
-AWS_QUERYSTRING_AUTH = False
-AWS_S3_FILE_OVERWRITE = False
-AWS_IS_GZIPPED = True
-AWS_AUTO_CREATE_BUCKET = True
+FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 99
+
+
+# Data Upload
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = None
 
 
 # Markdownx
