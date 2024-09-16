@@ -8,7 +8,12 @@
                     {% if user.is_staff %}
                         <li><a href="{% url 'admin:index' %}">{% trans 'Admin' %}</a></li>
                     {% endif %}
-                    <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
+                    <li>
+                      <form method="post" action="{% url 'logout' %}" style="margin-bottom: 0">
+                        {% csrf_token %}
+                        <button type="submit" style="background-color:transparent;border:0;color:#2aaae9;cursor:pointer;font-size:1.5rem;font-weight:400">{% trans 'Logout' %}</button>
+                      </form>
+                    </li>
                 {% else %}
                     <li><a href="{% url 'login' %}">{% trans 'Login' %}</a></li>
                 {% endif %}
