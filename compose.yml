@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   app:
     build:
@@ -18,23 +16,29 @@ services:
     - RDS_DB_NAME=postgres
     - RDS_USERNAME=postgres
     - RDS_PASSWORD=password
-    volumes:
-    - .:/app
     depends_on:
       db:
         condition: service_healthy
       mail:
         condition: service_healthy
-    ports:
-      - "80:80"
-    entrypoint:
-      - "bash"
-      - "prestart.sh"
     command:
-      - "python"
+      - "uv"
+      - "run"
       - "manage.py"
       - "runserver"
       - "0.0.0.0:80"
+    ports:
+      - "80:80"
+
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - .venv/
+        - action: rebuild
+          path: ./pyproject.toml
 
   mail:
     image: maildev/maildev

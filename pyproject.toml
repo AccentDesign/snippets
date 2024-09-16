@@ -1,56 +1,54 @@
-[tool.poetry]
+[project]
 name = "app"
 version = "0.1.0"
-description = ""
-authors = ["Stuart <stuart@accentdesign.co.uk>"]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django-autocomplete-light>=3.11.0",
+    "django-markdownx>=4.0.7",
+    "django-modelcluster>=6.3",
+    "django-storages[s3]>=1.14.4",
+    "django-taggit>=6.0.0",
+    "django>=5.1.1",
+    "psycopg[binary]>=3.2.1",
+    "pygments>=2.18.0",
+    "sentry-sdk>=2.14.0",
+    "uvicorn>=0.30.6",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-boto3 = "*"
-django = "*"
-django-autocomplete-light = "*"
-django-modelcluster = "*"
-django-markdownx = "*"
-django-storages = "*"
-django-taggit = "*"
-psycopg2-binary = "*"
-pygments = "*"
-sentry-sdk = "*"
-
-[tool.poetry.group.dev.dependencies]
-black = "*"
-httpx = "*"
-mypy = "*"
-ruff = "*"
-
-[tool.mypy]
-ignore_missing_imports = true
+[tool.uv]
+dev-dependencies = [
+    "black>=24.8.0",
+    "ruff>=0.6.4",
+]
 
 [tool.black]
 line-length = 88
 exclude = '''
   /(
-    migrations
+    .venv
+    | migrations
+    | node_modules
   )/
 '''
 
 [tool.ruff]
+exclude = [
+    ".venv",
+    "migrations",
+    "node_modules"
+]
+
+[tool.ruff.lint]
 select = ["E", "F", "I"]
 ignore = [
     "E501",  # line too long, handled by black
     "F403",  # based on the current code, too many to go through
     "F405",  # based on the current code, too many to go through
 ]
-exclude = [
-    "migrations",
-]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 combine-as-imports = true
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"

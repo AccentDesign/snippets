@@ -1,1 +1,10 @@
+.git
+.github
+.idea
+.venv
+.gitignore
 node_nodules
+compose.yml
+Dockerfile
+README.md
+run.sh
