@@ -22,16 +22,22 @@ install:
 ```bash
 ./run.sh uv add <package==1.0.0>
 ```
+```bash
+./run.sh uv add --group dev <package==1.0.0>
+```
 
 remove:
 ```bash
 ./run.sh uv remove <package>
 ```
+```bash
+./run.sh uv remove --group dev <package>
+```
 
 ## Auto Code Linting
 
 ```bash
-./run.sh uv run black .
+./run.sh uv run ruff format .
 ```
 
 ```bash

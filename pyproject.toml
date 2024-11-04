@@ -16,23 +16,13 @@ dependencies = [
     "uvicorn>=0.30.6",
 ]
 
-[tool.uv]
-dev-dependencies = [
-    "black>=24.8.0",
+[dependency-groups]
+dev = [
     "ruff>=0.6.4",
 ]
 
-[tool.black]
-line-length = 88
-exclude = '''
-  /(
-    .venv
-    | migrations
-    | node_modules
-  )/
-'''
-
 [tool.ruff]
+line-length = 88
 exclude = [
     ".venv",
     "migrations",
@@ -42,7 +32,6 @@ exclude = [
 [tool.ruff.lint]
 select = ["E", "F", "I"]
 ignore = [
-    "E501",  # line too long, handled by black
     "F403",  # based on the current code, too many to go through
     "F405",  # based on the current code, too many to go through
 ]
